@@ -26,28 +26,31 @@ function App() {
 
     setFilteredMovies(movies.filter(element => element.title.toLowerCase().includes(searchQuery.toLowerCase())))
 
-  }, [movies, searchQuery])
+  }, [searchQuery])
 
   return (
     <>
       <div className="container mt-3">
-        <h1 className="text-center">Movies List</h1>
+        <h1 className="text-center text-danger">Movies List</h1>
 
-
-        <div className="form-group my-4 d-flex gap-2">
+        <div className="form-group my-4 d-flex gap-3">
+          {/* search Bar */}
           <input
             type="text"
             placeholder='search...'
+            className='form-control w-100'
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)} />
 
-          <label htmlFor="">Filter Genre</label>
 
-          <select className="custom-select"
+          {/* Genre Selector */}
+          <select
+            className="form-select"
             name="genreSelection"
             id="genreSelection"
             onChange={handleSelection}>
 
+            <option>Filter by genre</option>
             <option value=''>All</option>
             <option value="Azione">Azione</option>
             <option value="Fantascienza">Fantascienza</option>
@@ -56,15 +59,22 @@ function App() {
           </select>
         </div>
 
-        <div className="col my-3">
-          {filteredMovies.map((movie, index) => (
-            <div key={index} className="card my-2">
-              <div className="card-body">
-                <h4 className="card-title">{movie.title}</h4>
-                <p className="card-text">Genere : {movie.genre}</p>
+
+        {/* Movie Card */}
+        <div className="container">
+          <div className="row">
+            {filteredMovies.map((movie, index) => (
+              <div key={index} className="col-3 gy-3">
+                <div className="card d-flex align-items-stretch h-100">
+                  <img src={movie.img} className="card-img-top" alt={movie.title} />
+                  <div className="card-body">
+                    <h4 className="card-title">{movie.title}</h4>
+                    <p className="card-text">{movie.genre}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </>

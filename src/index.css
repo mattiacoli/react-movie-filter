@@ -5,3 +5,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-color: rgb(29, 27, 27);
+}
+
+.card {
+
+  p {
+    font-size: 14px;
+    color: rgb(48, 47, 47);
+  }
+
+  img {
+    height: 400px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
