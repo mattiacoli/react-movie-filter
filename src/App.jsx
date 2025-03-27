@@ -18,7 +18,7 @@ function App() {
 
     console.log(selectGenre);
 
-    setFilteredMovies(movies.filter(element => element.genre === selectGenre))
+    setFilteredMovies(movies.filter(element => selectGenre === '' || element.genre === selectGenre))
 
   }, [movies, selectGenre])
 
