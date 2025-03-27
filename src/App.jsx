@@ -31,7 +31,8 @@ function App() {
 
   useEffect(() => {
 
-    setFilteredMovies(movies.filter(element => element.title.toLowerCase().includes(searchQuery.toLowerCase())))
+    setFilteredMovies(movies.filter(element => (element.title.toLowerCase().includes(searchQuery.toLowerCase())) && (selectGenre === '' || element.genre === selectGenre)))
+
 
   }, [movies, searchQuery])
 
@@ -113,23 +114,25 @@ function App() {
 
 
         {/* Movie Card */}
-        <div className="container">
-          <div className="row">
-            {filteredMovies.map((movie, index) => (
-              <div key={index} className="col-3 gy-3">
-                <div className="card d-flex align-items-stretch h-100">
-                  <img src={movie.img} className="card-img-top" alt={movie.title} />
-                  <div className="card-body">
-                    <h4 className="card-title">{movie.title}</h4>
-                    <p className="card-text">{movie.genre}</p>
+        <main>
+          <div className="container p-4">
+            <div className="row">
+              {filteredMovies.map((movie, index) => (
+                <div key={index} className="col-3 gy-3">
+                  <div className="card d-flex align-items-stretch h-100">
+                    <img src={movie.img} className="card-img-top" alt={movie.title} />
+                    <div className="card-body">
+                      <h4 className="card-title">{movie.title}</h4>
+                      <p className="card-text">{movie.genre}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </main>
 
-        {/* add movie */}
+
 
       </div>
     </>
