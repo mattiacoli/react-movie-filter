@@ -20,7 +20,7 @@ function App() {
 
     setFilteredMovies(movies.filter(element => selectGenre === '' || element.genre === selectGenre))
 
-  }, [movies, selectGenre])
+  }, [selectGenre])
 
 
 
