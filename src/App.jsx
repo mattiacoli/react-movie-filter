@@ -6,6 +6,13 @@ function App() {
   const [selectGenre, setSelectGenre] = useState("")
   const [filteredMovies, setFilteredMovies] = useState(movies)
   const [searchQuery, setSearchQuery] = useState('')
+  const [newTitle, setNewTitle] = useState('')
+  const [newGenre, setNewGenre] = useState('')
+  const [newImage, setNewImage] = useState('')
+  let newMovie;
+
+
+
 
   function handleSelection(e) {
 
@@ -26,7 +33,34 @@ function App() {
 
     setFilteredMovies(movies.filter(element => element.title.toLowerCase().includes(searchQuery.toLowerCase())))
 
-  }, [searchQuery])
+  }, [movies, searchQuery])
+
+  useEffect(() => {
+
+    newMovie = {
+      title: newTitle,
+      genre: newGenre,
+      img: newImage
+    }
+
+
+
+  }, [movies, newTitle, newGenre, newImage])
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    setFilteredMovies([newMovie, ...movies])
+
+    console.log(newMovie, movies);
+
+    setNewTitle('')
+    setNewGenre('')
+    setNewImage('')
+
+  }
+
+
 
   return (
     <>
@@ -59,6 +93,24 @@ function App() {
           </select>
         </div>
 
+        <div className="container my-4">
+
+          <h4 className='text-light'>Add new movie</h4>
+
+
+          <form
+            action=""
+            className='my-4 d-flex gap-1'
+            onSubmit={handleSubmit}>
+
+            <input className='form-control' type="text" placeholder='title' value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
+            <input className='form-control' type="text" placeholder='genre' value={newGenre} onChange={(e) => setNewGenre(e.target.value)} />
+            <input className='form-control' type="text" placeholder='img url' value={newImage} onChange={(e) => setNewImage(e.target.value)} />
+            <button type="submit" className="btn btn-primary">Add</button>
+
+          </form>
+        </div>
+
 
         {/* Movie Card */}
         <div className="container">
@@ -76,6 +128,9 @@ function App() {
             ))}
           </div>
         </div>
+
+        {/* add movie */}
+
       </div>
     </>
   )
