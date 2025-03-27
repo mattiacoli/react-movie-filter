@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 * {
   margin: 0;
@@ -7,7 +8,21 @@
 }
 
 body {
-  background-color: rgb(29, 27, 27);
+  font-family: 'Oswald', sans-serif;
+  background-image: url(https://images.pexels.com/photos/6985048/pexels-photo-6985048.jpeg?cs=srgb&dl=pexels-codioful-6985048.jpg&fm=jpg);
+
+
+}
+
+main {
+  .container {
+
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
 }
 
 .card {
@@ -19,6 +34,7 @@ body {
 
   img {
     max-height: 400px;
+
   }
 
   &:hover {

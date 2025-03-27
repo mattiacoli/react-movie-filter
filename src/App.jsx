@@ -66,7 +66,7 @@ function App() {
   return (
     <>
       <div className="container mt-3">
-        <h1 className="text-center text-danger">Movies List</h1>
+        <h1 className="text-center fw-bolder fs-1">Movies List</h1>
 
         <div className="form-group my-4 d-flex gap-3">
           {/* search Bar */}
