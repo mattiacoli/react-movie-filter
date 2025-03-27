@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import movies from "./data/movies"
-import movie from './data/movies';
-
 
 function App() {
 
   const [selectGenre, setSelectGenre] = useState("")
   const [filteredMovies, setFilteredMovies] = useState(movies)
+  const [searchQuery, setSearchQuery] = useState('')
 
   function handleSelection(e) {
 
@@ -23,9 +22,11 @@ function App() {
   }, [selectGenre])
 
 
+  useEffect(() => {
 
+    setFilteredMovies(movies.filter(element => element.title.toLowerCase().includes(searchQuery.toLowerCase())))
 
-
+  }, [movies, searchQuery])
 
   return (
     <>
@@ -34,6 +35,12 @@ function App() {
 
 
         <div className="form-group my-4 d-flex gap-2">
+          <input
+            type="text"
+            placeholder='search...'
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)} />
+
           <label htmlFor="">Filter Genre</label>
 
           <select className="custom-select"
@@ -60,11 +67,6 @@ function App() {
           ))}
         </div>
       </div>
-
-
-
-
-
     </>
   )
 }
