@@ -45,12 +45,12 @@ function App() {
 
           {/* Genre Selector */}
           <select
-            className="form-select"
+            className="form-select w-50"
             name="genreSelection"
             id="genreSelection"
             onChange={handleSelection}>
 
-            <option>Filter by genre</option>
+            <option selected disabled>Filter by genre</option>
             <option value=''>All</option>
             <option value="Azione">Azione</option>
             <option value="Fantascienza">Fantascienza</option>
